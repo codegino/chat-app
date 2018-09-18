@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
     users.addUser(socket.id, params.name, params.room);
 
     io.to(room).emit('updateUserList', users.getUserList(params.room));
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
+    socket.emit('newMessage', generateMessage('Admin', `Welcome to the chat app - You are in (${params.room}) room.`));
     socket.broadcast.to(room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
     callback();
   });
