@@ -24,12 +24,12 @@ class Users {
   }
 
   getUserList(room) {
-    const users = this.users.filter(user => user.room === room);
+    const users = this.users.filter(user => user.room.toLowerCase() === room.toLowerCase());
     return users.map(user => user.name);
   }
 
   isExistingInRoom(name, room) {
-    return this.users.findIndex(user => user.name === name && user.room === room) !== -1;
+    return this.users.findIndex(user => user.name.toLowerCase() === name.toLowerCase() && user.room.toLowerCase() === room.toLowerCase()) !== -1;
   }
 }
 
